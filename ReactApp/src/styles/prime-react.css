@@ -1,0 +1,95 @@
+@layer primereact {
+    /* Toast */
+    .p-toast-message {
+        @apply w-6;
+    }
+    .p-toast-message-content {
+        @apply !p-3;
+    }
+    .p-toast-message-icon {
+        @apply !w-5 !h-5 !m-0;
+    }
+
+    /* Dropdown */
+    .p-dropdown {
+        @apply !w-auto;
+    }
+    .p-multiselect {
+        @apply !rounded-lg;
+    }
+    .p-multiselect-label {
+        @apply !px-3 !py-2;
+    }
+    .p-multiselect-filter {
+        @apply !p-1;
+    }
+
+    /* Datatable */
+    .p-datatable-header {
+        @apply !border-0 !border-b rounded-t-md;
+    }
+
+    /* Input */
+    .p-inputtext::placeholder {
+        @apply opacity-60;
+    }
+
+    /* Password Input */
+    .p-password > div {
+        @apply w-full;
+    }
+    .p-password > div > span > svg {
+        @apply mb-[10px] outline-none;
+    }
+    .p-password > div > input {
+        @apply !py-2 w-full;
+    }
+
+    /* Switch Input */
+    .p-inputswitch {
+        @apply !h-[24.5px];
+    }
+    .p-inputswitch-slider::before {
+        @apply !h-[17px] !w-[17px] top-[12.67px];
+    }
+
+    /* Multi Select */
+    .p-placeholder {
+        @apply opacity-70;
+    }
+
+    /* Menu */
+    .css-ppw245 {
+        @apply h-9;
+    }
+    .ps-menu-button {
+        @apply hover:!bg-lightpurple hover:!text-white hover:shadow-[0_2px_4px_0_#7367f07a] !h-10 !mt-0; /* pl-0 */
+    }
+    /* .ps-submenu-content .ps-menu-button {
+        @apply !pl-3;
+    } */
+
+    /* Tab View */
+    .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+        @apply px-5 py-4 cursor-pointer;
+    }
+    .p-tabview .p-tabview-nav {
+        @apply !border-0 h-10;
+    }
+
+    /* Tree */
+    .p-tree {
+        @apply p-2.5;
+    }
+    .p-treenode-content > svg {
+        @apply mr-1;
+    }
+
+    /* OTP input */
+    .p-inputotp {
+        @apply justify-center gap-7 my-5;
+    }
+    .p-inputotp-input {
+        @apply text-2xl h-16 w-14 dark:bg-grey shadow-none dark:text-white;
+    }
+}
