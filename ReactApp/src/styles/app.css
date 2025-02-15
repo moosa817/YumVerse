@@ -1,0 +1,70 @@
+@layer tailwind-base, primereact, tailwind-utilities;
+
+/* IMPORTANT: In "styled" mode you must add the PrimeReact Theme here. Do NOT include in "unstyled" mode */
+@import "primereact/resources/themes/saga-blue/theme.css" layer(primereact);
+
+@import "./prime-react.css";
+@import "./component.css";
+@import "./global.css";
+@import "./material-ui.css";
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+:root {
+  background-color: #f8f7fa;
+  /* --main-height: calc(100vh - 116px) !important; */
+}
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+} */
+
+* {
+  box-sizing: border-box;
+  font-family: "Outfit", serif;
+  --tw-ring-color: rgb(0 0 0 / 0) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply block dark:text-white;
+}
+h1 {
+  font-size: 2.1em;
+  margin-bottom: 0.67em;
+}
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+h3 {
+  font-size: 1.3em;
+  margin-bottom: 1em;
+}
+h4 {
+  font-size: 1em;
+  margin-bottom: 1.33em;
+}
+h5 {
+  font-size: 0.83em;
+  margin-bottom: 1.67em;
+}
+
+label {
+  @apply dark:text-white;
+}

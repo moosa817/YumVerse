@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Dashboard",
+    "route": "/dashboard"
+  },
+  {
+    "name": "Recipes",
+    "route": "/dashboard/recipes"
+  },
+  {
+    "name": "Settings",
+    "route": "/dashboard/settings"
+  }
+]
