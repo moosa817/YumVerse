@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "yum_project/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "yum_project/wsgi.py"
+        }
+    ]
+}
