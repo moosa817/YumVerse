@@ -28,7 +28,7 @@ CONFIG = config
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-b)w=-=5-j*v5sb&k0jqe5!b1$%@c1i!3=$faf&8au$fu0pg270"
+SECRET_KEY = CONFIG.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

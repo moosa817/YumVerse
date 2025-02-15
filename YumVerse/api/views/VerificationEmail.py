@@ -74,7 +74,7 @@ def send_verification_email(email, code):
     <body>
         <div class="container">
             <div class="header">
-                <img src="https://d3q0umke1d5kdc.cloudfront.net/icon.png" alt="Logo">
+                <img src="https://d1tk1lpgg2qpuw.cloudfront.net/logo.png" alt="Logo">
             </div>
             <div class="title">Password Reset Verification</div>
             <div class="content">
@@ -82,10 +82,10 @@ def send_verification_email(email, code):
                 <p>You have requested to reset your password. Please use the verification code below to proceed:</p>
                 <div class="code">{code}</div>
                 <p>If you did not request this, please ignore this email or contact support immediately.</p>
-                <p>Thank you for using GoofCoin.</p>
+                <p>Thank you for using YumVerse.</p>
             </div>
             <div class="footer">
-                <p>&copy; 2024 GoofCoin. All rights reserved.</p>
+                <p>&copy; 2025 YumVerse. All rights reserved.</p>
             </div>
         </div>
     </body>
@@ -102,7 +102,7 @@ def send_verification_email(email, code):
         "personalizations": [{"to": [{"email": email}]}],
         "from": {
             "email": settings.CONFIG.FROM_EMAIL,
-            "name": "GoofCoin Support",
+            "name": "YumVerse Support",
         },
         "subject": "Password Reset Verification Code",
         "content": [{"type": "text/html", "value": html_content}],

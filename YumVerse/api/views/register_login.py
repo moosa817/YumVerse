@@ -150,9 +150,9 @@ class ResetForm(APIView):
         except:
             return Response({"error": "Invalid email or username."}, status=404)
 
-        if user.google or user.guest:
+        if user.google:
             return Response(
-                {"error": "Cannot reset password for google or guest users."},
+                {"error": "Cannot reset password for google users."},
                 status=400,
             )
 
