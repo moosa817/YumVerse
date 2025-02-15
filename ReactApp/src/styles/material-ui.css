@@ -1,0 +1,9 @@
+.MuiTypography-root,
+.MuiButtonBase-root,
+.MuiStack-root {
+    font-family: "Outfit", serif !important;
+}
+
+.MuiDateRangeCalendar-root > div:first-child {
+    @apply hidden;
+}

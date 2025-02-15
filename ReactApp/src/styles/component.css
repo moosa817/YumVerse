@@ -1,0 +1,50 @@
+.main {
+  @apply m-5 p-5 bg-white rounded-lg border border-grey shadow-[0_2px_6px_0_lightgrey];
+}
+
+/* button */
+.btn {
+  @apply !border-2 gap-1.5 outline-none !py-2 !px-3.5 rounded-md hover:!bg-transparent hover:text-blue;
+}
+.btn > span {
+  @apply font-medium !text-base;
+}
+
+/* links */
+.socialLink {
+  @apply text-base !mb-3;
+}
+
+/* Sidebar */
+.sidebarMenuItem {
+  /* @apply !h-9; */
+}
+.sidebarMenuTitles {
+  @apply mt-6 mb-3 w-[190px] mx-auto text-[#a0a0ac] font-light;
+}
+/* ----
+  .sidebarMenuItem > svg {
+    @apply text-lightgrey text-xs;
+  }
+  .sidebarMenuItem > span {
+    @apply text-lightgrey text-[17px];
+  }
+  .sidebarMenuItem:hover {
+    @apply [&>span]:text-white [&>svg]:!text-white !bg-lightpurple shadow-[0_2px_6px_0_#7367f07a];
+  }
+  ----- */
+
+.activeMenuItem,
+.sidebarMenuItem:hover {
+  @apply !text-white !bg-lightpurple;
+}
+
+/* Form */
+.formStyles {
+  @apply grid grid-cols-3 gap-4 max-lg:grid-cols-2 max-sm:grid-cols-1;
+}
+
+/* Field */
+.fieldWrapperStyles {
+  @apply flex flex-col gap-1.5 mt-3;
+}
