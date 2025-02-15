@@ -1,7 +1,7 @@
 # serializers.py
 
 from rest_framework import serializers
-from yum_app.models import User, Recipe
+from yum_app.models import User, Recipe, UserHealthProfile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.password_validation import validate_password
@@ -10,6 +10,7 @@ from django.core.files.base import ContentFile
 from PIL import Image, ImageOps
 import io
 from rest_framework import serializers
+from rest_framework import viewsets
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -169,3 +170,17 @@ class RecipeSerializer(serializers.ModelSerializer):
         model = Recipe
         fields = "__all__"
         read_only_fields = ["user", "created_at", "updated_at"]
+
+
+class UserHealthProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserHealthProfile
+        fields = "__all__"
+
+
+class UserHealthProfileCreateSerializer(serializers.ModelSerializer):
+    """Serializer for creating a profile, allowing only a few fields."""
+
+    class Meta:
+        model = UserHealthProfile
+        fields = ["height_cm", "weight_kg", "age", "additional_info"]

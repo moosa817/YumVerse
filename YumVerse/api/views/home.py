@@ -1,19 +1,27 @@
 from django.http import HttpResponse
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
-from yum_app.models import User, Recipe
+from yum_app.models import User, Recipe, UserHealthProfile
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.db.models import Q, Sum  # Import Q object
 from django.conf import settings
-from api.serializers import PfpSerializer, RecipeSerializer
+from api.serializers import (
+    PfpSerializer,
+    RecipeSerializer,
+    UserHealthProfileSerializer,
+    UserHealthProfileCreateSerializer,
+)
 from rest_framework.parsers import MultiPartParser, JSONParser
 from rest_framework import generics
 from decimal import Decimal
 from django.db.models import Count
 from rest_framework.pagination import PageNumberPagination
 import time
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
+from rest_framework.generics import (
+    RetrieveUpdateDestroyAPIView,
+    ListCreateAPIView,
+)
 
 
 class VerifyToken(APIView):
@@ -33,7 +41,6 @@ class VerifyToken(APIView):
                 "username": request.user.username,
                 "name": request.user.name,
                 "email": request.user.email,
-                "balance": get_balance(request.user),
                 "pfp": pfp,
                 "isGoogle": request.user.google,
             }
@@ -87,3 +94,22 @@ class RecipeDetailView(RetrieveUpdateDestroyAPIView):
 
     def get_queryset(self):
         return Recipe.objects.filter(user=self.request.user)
+
+
+# List and Create API
+class UserHealthProfileListCreateView(generics.ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        """Return all user health profile fields for GET requests."""
+        return UserHealthProfile.objects.filter(user=self.request.user)
+
+    def get_serializer_class(self):
+        """Use a restricted serializer for POST, full serializer for GET."""
+        if self.request.method == "POST":
+            return UserHealthProfileCreateSerializer
+        return UserHealthProfileSerializer
+
+    def perform_create(self, serializer):
+        """Auto-link the user and let the model compute extra fields."""
+        serializer.save(user=self.request.user)

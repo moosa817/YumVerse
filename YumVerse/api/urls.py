@@ -23,4 +23,14 @@ urlpatterns = [
     ## app viewss
     path("recipes/", home.RecipeListCreateView.as_view(), name="recipe-list-create"),
     path("recipes/<int:pk>/", home.RecipeDetailView.as_view(), name="recipe-detail"),
+    path(
+        "health-profiles/",
+        home.UserHealthProfileListCreateView.as_view(),
+        name="userhealthprofile-list",
+    ),
+    # path(
+    #     "health-profiles/<int:pk>/",
+    #     home.UserHealthProfileSerializer.as_view(),
+    #     name="userhealthprofile-detail",
+    # ),
 ]

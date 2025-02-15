@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now, timedelta
 import random
+from yum_app.ai_funcs import analyze_health_profile
 
 
 # Create your models here.
@@ -55,3 +56,41 @@ class Recipe(models.Model):
 
     def __str__(self):
         return f"{self.title} by {self.user.username}"
+
+
+# AI BASED PREFERENCE
+
+
+class UserHealthProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)  # Link to user
+    height_cm = models.FloatField()  # Height in cm
+    weight_kg = models.FloatField()  # Weight in kg
+    age = models.PositiveIntegerField()
+    additional_info = models.TextField(blank=True, null=True)  # Extra user details
+
+    bmi = models.FloatField(editable=False, null=True)  # Auto-calculated BMI
+    maintenance_calories = models.FloatField(null=True, blank=True)
+    recommended_carbs = models.FloatField(null=True, blank=True)
+    recommended_fats = models.FloatField(null=True, blank=True)
+    recommended_protein = models.FloatField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        """Calculate BMI and get AI-based recommendations before saving."""
+        if self.height_cm and self.weight_kg:
+            height_m = self.height_cm / 100
+            self.bmi = round(self.weight_kg / (height_m**2), 2)
+
+        # Call AI model
+        ai_result = analyze_health_profile(self)
+
+        print(ai_result)
+        if not ai_result:
+            raise ValueError("AI model failed to return results.")
+
+        # Store AI results
+        self.maintenance_calories = ai_result["maintenance_calories"]
+        self.recommended_carbs = ai_result["recommended_macros"]["carbs"]
+        self.recommended_fats = ai_result["recommended_macros"]["fats"]
+        self.recommended_protein = ai_result["recommended_macros"]["protein"]
+
+        super().save(*args, **kwargs)  # Save updated fields
