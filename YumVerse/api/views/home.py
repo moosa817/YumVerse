@@ -79,10 +79,9 @@ class GetProfile(APIView):
 
 class RecipeListCreateView(ListCreateAPIView):
     serializer_class = RecipeSerializer
-    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return Recipe.objects.filter(user=self.request.user)
+        return Recipe.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
