@@ -98,7 +98,6 @@ class RecipeDetailView(RetrieveUpdateDestroyAPIView):
 
 # List and Create API
 class UserHealthProfileListCreateView(generics.ListCreateAPIView):
-    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         """Return all user health profile fields for GET requests."""
