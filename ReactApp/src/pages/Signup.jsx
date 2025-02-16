@@ -37,6 +37,7 @@ const Signup = () => {
       user.set(data);
       setCredentials(initialCredentials);
       navigate("/dashboard");
+      window.location.reload();
     } catch (error) {
       API.error(error, "An error occurred while registration");
     }

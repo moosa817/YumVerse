@@ -166,7 +166,7 @@ const Header = () => {
           >
             {!userData ? (
               <Button
-                onClick={() => navigate("login")}
+                onClick={() => navigate("/login")}
                 variant="outlined"
                 color="primary"
               >
